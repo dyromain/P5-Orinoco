@@ -1,6 +1,82 @@
+/* Définition de la police */
+@font-face {
+    font-family: 'fawn_scriptregular';
+    src: url('fawn-webfont.eot');
+    src: url('fawn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fawn-webfont.woff2') format('woff2'),
+         url('fawn-webfont.woff') format('woff'),
+         url('fawn-webfont.ttf') format('truetype'),
+         url('fawn-webfont.svg#fawn_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sf_cartoonist_handregular';
+    src: url('SF_Cartoonist_Hand-webfont.eot');
+    src: url('SF_Cartoonist_Hand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('SF_Cartoonist_Hand-webfont.woff') format('woff'),
+         url('SF_Cartoonist_Hand-webfont.ttf') format('truetype'),
+         url('SF_Cartoonist_Hand-webfont.svg#sf_cartoonist_handregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 
+/* Eléments principaux de la page */
+body
+{
+    font-family: 'sf_cartoonist_handregular', Arial, sans-serif;
+   /* margin: 0 auto;*/
 
+   
+}
+
+h1, h2, h3
+{
+    font-family: 'fawn_scriptregular', Arial, sans-serif;
+}
+
+/* Header */
+.logo > img
+{
+    width:30%;
+    margin-left:5%;
+}
+
+header
+{
+    display:flex;
+    background-color: #F3E9F1;
+    align-items: center;
+
+}
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+    font-size:1.3em;
+}
+
+nav li
+{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+nav a
+{
+    color:#000000;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color:#A165CA;
+}
 
 /*X-small devices*/
 /*@media (max-width: 600px){
