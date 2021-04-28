@@ -54,17 +54,22 @@ header
 
 }
 
+nav
+{
+    width:50%;
+}
+
 nav ul
 {
     list-style-type: none;
     display: flex;
     font-size:1.3em;
+    margin-left: 30%;
 }
 
 nav li
 {
-    margin-right: 30px;
-    margin-left: 30px;
+    width:50%;
 }
 
 nav a
@@ -77,6 +82,110 @@ nav a:hover
 {
     color:#A165CA;
 }
+
+.fa-user, .fa-shopping-cart
+{
+    padding-right:4%;
+}
+
+/*Présentation accueil*/
+.accueil
+{
+    position: relative;
+}
+
+.accueil-img > img
+{
+    width:100%;
+    height: 30em;
+}
+
+.accueil-txt
+{
+    position: absolute;
+    top: 25px;
+    width: 490px;
+    font-size: 4em;
+    font-family: 'fawn_scriptregular';
+    left: 30px;
+}
+
+/*Liste des peluches*/
+
+
+#ligne1
+{
+    display:flex;
+    
+}
+
+#ligne2
+{
+    display:flex;
+}
+
+#ligne3
+{
+    display:flex;
+
+}
+
+.norbert
+{
+    width:88%;
+}
+
+.norbert img
+{
+    width:100%;
+}
+
+.arnold
+{
+    width:90%;
+}
+
+.arnold img
+{
+    width:100%;
+}
+
+.lenny-carl 
+{
+    width:47%;
+}
+
+.lenny-carl img
+{
+    width:100%;
+}
+
+.gustav 
+{
+    width:53%;
+}
+
+.gustav img
+{
+    width:100%;
+}
+
+.garfunkel
+{
+    width:50%;
+}
+
+.garfunkel img
+{
+    width:100%;
+}
+
+.bloc-txt
+{
+    background-color:#F3E9F1;
+    width:50%;
+}
+
 
 /*X-small devices*/
 /*@media (max-width: 600px){
