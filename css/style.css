@@ -110,82 +110,115 @@ nav a:hover
     left: 30px;
 }
 
-/*Liste des peluches*/
-
-
-#ligne1
-{
-    display:flex;
-    
+/*Peluches*/
+section ul {
+    margin: 0 0 1.5rem;
+    padding: 0;
 }
 
-#ligne2
-{
-    display:flex;
+section li {
+    display: inline-block;
 }
 
-#ligne3
-{
-    display:flex;
-
+section img {
+    height: auto;
+    margin-bottom: .5rem;
+    max-width: calc(100% + 2rem);
+    position: relative;
+    left: -1rem;
+    right: -1rem;
 }
 
-.norbert
-{
-    width:88%;
+p {
+    margin: 0 0 .5rem;
 }
 
-.norbert img
-{
-    width:100%;
+/*main {
+    padding: 1rem 2rem;
+    margin: auto;
 }
 
-.arnold
-{
-    width:90%;
+header {
+    padding: 1rem 2rem;
+    text-align: center;
+}*/
+
+.carte {
+    border: 1px solid #bac6d3;
+    border-radius: 8px;
+    padding: 1rem;
 }
 
-.arnold img
-{
-    width:100%;
+/*Carousel*/
+.liste-peluches {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
 }
 
-.lenny-carl 
-{
-    width:47%;
+.peluche {
+    flex: 1 0 250px;
+    margin-left: 1rem;
+    scroll-snap-align: start;
 }
 
-.lenny-carl img
-{
-    width:100%;
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
 }
 
-.gustav 
-{
-    width:53%;
+::-webkit-scrollbar {
+    height: 6px;
+    background-color: #F5F5F5;
 }
 
-.gustav img
-{
-    width:100%;
+::-webkit-scrollbar-thumb {
+    background-color: #3d4852;
+    border-radius: 3px;
 }
 
-.garfunkel
-{
-    width:50%;
+
+/*Breakpoints*/
+
+@media screen and (min-width: 576px) {
+    .peluche {
+        flex-basis: 300px;
+    }
 }
 
-.garfunkel img
-{
-    width:100%;
+@media screen and (min-width: 992px) {
+
+    body,
+    button {
+        font-size: 1.125rem;
+    }
+
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    .peluche {
+        flex-basis: 325px;
+    }
 }
 
-.bloc-txt
-{
-    background-color:#F3E9F1;
-    width:50%;
+@media screen and (min-width: 1280px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    .peluche {
+        flex-basis: 450px;
+    }
 }
 
+@media screen and (min-width: 1600px) {
+
+    body, button,
+    {
+        font-size: 1.25rem;
+    }
+}
 
 /*X-small devices*/
 /*@media (max-width: 600px){
