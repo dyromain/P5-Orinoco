@@ -92,12 +92,13 @@ nav a:hover
 .accueil
 {
     position: relative;
+    height:80%;
 }
 
 .accueil-img > img
 {
     width:100%;
-    height: 30em;
+    object-fit: cover;
 }
 
 .accueil-txt
@@ -105,7 +106,7 @@ nav a:hover
     position: absolute;
     top: 25px;
     width: 490px;
-    font-size: 4em;
+    font-size: 3.5em;
     font-family: 'fawn_scriptregular';
     left: 30px;
 }
@@ -122,32 +123,63 @@ section li {
 
 section img {
     height: auto;
-    margin-bottom: .5rem;
     max-width: calc(100% + 2rem);
     position: relative;
     left: -1rem;
     right: -1rem;
 }
 
-p {
-    margin: 0 0 .5rem;
-}
-
-/*main {
-    padding: 1rem 2rem;
-    margin: auto;
-}
-
-header {
-    padding: 1rem 2rem;
-    text-align: center;
-}*/
-
 .carte {
     border: 1px solid #bac6d3;
     border-radius: 8px;
     padding: 1rem;
+    height: 87%;
 }
+
+.nom-peluche
+{
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+
+.carte-desc
+{
+    display:flex;
+    align-items: center;
+}
+
+.carte-desc p
+{
+    margin-left:45%;
+}
+
+section > ul > li:nth-child(3) > div > div > p
+{
+    margin-left: 41%;
+}
+
+a.button
+{
+    background-color:#A165CA;
+    padding:2%;
+    border-radius:9px;
+    text-decoration: none;
+    color:black;
+    margin-left:23%;
+}
+
+section > ul > li:nth-child(1) > div > img
+{
+    width: 105%;
+    margin-left: 1%;
+}
+
+/*section > ul > li:nth-child(5) > div > img
+{
+    width: 104%;
+}*/
 
 /*Carousel*/
 .liste-peluches {
@@ -161,6 +193,20 @@ header {
     flex: 1 0 250px;
     margin-left: 1rem;
     scroll-snap-align: start;
+}
+section > ul > li:nth-child(3) > div
+{
+    width: 80%;
+}
+
+section > ul > li:nth-child(5) > div
+{
+    width: 89%;
+}
+
+section > ul > li:nth-child(4)
+{
+    margin-left: -2.5rem;
 }
 
 ::-webkit-scrollbar-track {
