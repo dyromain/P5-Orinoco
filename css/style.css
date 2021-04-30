@@ -148,6 +148,7 @@ section img {
 {
     display:flex;
     align-items: center;
+    margin-bottom:2%;
 }
 
 .carte-desc p
