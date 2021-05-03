@@ -185,17 +185,13 @@ section > ul > li:nth-child(1) > div > img
     margin-left: 1%;
 }
 
-/*section > ul > li:nth-child(5) > div > img
-{
-    width: 104%;
-}*/
 
 /*Carousel*/
 .liste-peluches {
     display: flex;
     overflow-x: scroll;
-    /*padding: 1rem 0;*/
     scroll-snap-type: x mandatory;
+    margin-top:2%;
 }
 
 .peluche {
@@ -234,17 +230,6 @@ section > ul > li:nth-child(4)
 
 /*Footer*/
 
-/*.logo-footer
-{
-    text-align: center;
-}
-
-.logo-footer img
-{
-    width:10%;
- 
-}*/
-
 .social
 {
     display: flex;
@@ -254,22 +239,6 @@ section > ul > li:nth-child(4)
     margin-right: auto;
     margin-top: 3%;
 }
-
-/*.fa-twitter, .fa-facebook, .fa-instagram
-{
-    color:black;
-}
-
-.twitter > a, .facebook > a, .instagram > a
-{
-    color:black;
-}
-
-
-.twitter > a:hover, .facebook > a:hover, .instagram > a:hover
-{
-    color:#A165CA;
-}*/
 
 footer > ul
 {
