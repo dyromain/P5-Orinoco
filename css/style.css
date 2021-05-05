@@ -105,128 +105,102 @@ nav a:hover
 {
     position: absolute;
     top: 25px;
-    width: 490px;
+    width: 430px;
     font-size: 3.5em;
     font-family: 'fawn_scriptregular', Arial, sans-serif;
     left: 30px;
 }
 
-/*Peluches*/
-section ul {
-    margin: 0 0 1.5rem;
-    padding: 0;
-}
-
-section li {
-    display: inline-block;
-}
-
-section img {
-    height: auto;
-    max-width: calc(100% + 2rem);
-    position: relative;
-    left: -1rem;
-    right: -1rem;
-}
-
-.carte {
-    border: 1px solid #bac6d3;
-    border-radius: 8px;
-    padding: 1rem;
-    height: 87%;
-}
-
-.nom-peluche
+/*Liste des produits*/
+.liste-produit
 {
-    text-align: center;
-    margin-top: -5px;
-    margin-bottom: 15px;
-}
-
-
-.carte-desc
-{
-    display:flex;
-    align-items: center;
-    margin-bottom:4%;
-}
-
-.carte-desc p
-{
-    margin-left:45%;
-    font-weight: bold;
-}
-
-.carte > p
-{
-    margin-bottom: 1%;
-    margin-top: 1%;
-    text-align: center;
-}
-
-section > ul > li:nth-child(3) > div > div > p
-{
-    margin-left: 41%;
-}
-
-a.button
-{
-    background-color:#A165CA;
-    padding:2%;
-    border-radius:9px;
-    text-decoration: none;
-    color:black;
-    margin-left:23%;
-}
-
-section > ul > li:nth-child(1) > div > img
-{
-    width: 105%;
-    margin-left: 1%;
-}
-
-
-/*Carousel*/
-.liste-peluches {
     display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    margin-left: 1%;
+    margin-right: 1%;
     margin-top:2%;
 }
 
-.peluche {
-    flex: 1 0 250px;
-    margin-left: 1rem;
-    scroll-snap-align: start;
-}
-section > ul > li:nth-child(3) > div
+section img
 {
-    width: 80%;
+    width:100%;
 }
 
-section > ul > li:nth-child(5) > div
+section > div
 {
-    width: 89%;
-}
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+}    
 
-section > ul > li:nth-child(4)
+section > div:nth-child(1)
 {
-    margin-left: -2.5rem;
+    width: 118%;
+    margin-right: 1%;
 }
 
-::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
+section > div:nth-child(2)
+{
+    width: 121%;
+    margin-right: 1%;
 }
 
-::-webkit-scrollbar {
-    height: 10px;
-    background-color: #F5F5F5;
+section > div:nth-child(3)
+{
+    margin-right: 1%;
+    width: 106%;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #3d4852;
-    border-radius: 3px;
+section > div:nth-child(4)
+{
+    margin-right: 1%;
+    width: 122%;
 }
+
+section > div:nth-child(5)
+{
+    width: 119%;
+}
+
+section h2
+{
+    text-align: center;
+}
+
+.produit-desc
+{
+    display:flex;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+
+section p
+{
+    margin-top: 1%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    font-weight:bold;
+}
+
+section a
+{
+    color:#000000;
+    text-decoration: none; 
+    background: #A165CA;
+    padding: 2%;
+    border-radius: 8px;
+    margin-left:33%;
+}
+
+section a:hover
+{
+    font-weight:bold;
+    filter:brightness(130%);
+}
+
+div:nth-child(3) > div > a
+{
+    margin-left: 25%;
+}
+
 
 /*Footer*/
 
@@ -269,45 +243,6 @@ footer a:hover
 
 /*Breakpoints*/
 
-@media screen and (min-width: 576px) {
-    .peluche {
-        flex-basis: 300px;
-    }
-}
-
-@media screen and (min-width: 992px) {
-
-    body,
-    button {
-        font-size: 1.125rem;
-    }
-
-    h1 {
-        font-size: 2.75rem;
-    }
-
-    .peluche {
-        flex-basis: 325px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    h1 {
-        font-size: 4rem;
-    }
-
-    .peluche {
-        flex-basis: 450px;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-
-    body, button,
-    {
-        font-size: 1.25rem;
-    }
-}
 
 /*X-small devices*/
 /*@media (max-width: 600px){

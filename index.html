@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ORINOCO est une entreprise de commerce en ligne.">
         <link rel="stylesheet" media="screen and (min-width: 992px)" href="./css/style.css" />
         <link rel="stylesheet" href="./font/fawn-script/stylesheet.css"/>      
         <link rel="stylesheet" href="./font/cartoonisthand/stylesheet.css"/>  
@@ -19,14 +20,13 @@
             
             <nav>
                 <ul>
-                        <li><a href="#"><i class="fas fa-user"></i>Se connecter / S'inscrire</a></li>
-                        <li><a href="#"><i class="fas fa-shopping-cart"></i>Mon panier</a></li>
+                          <li><a href="#"><i class="fas fa-shopping-cart"></i>Mon panier</a></li>
                 </ul>
             </nav>   
             
         </header>
 
-        <main>
+        <main id="bloc-page">
             <!--Présentation accueil-->
             <div class="accueil">
                 <div class="accueil-img">
@@ -37,76 +37,17 @@
                 </div>          
             </div>
             
-            <!--Liste des peluches-->
+ 
+            <div id="erreur">
+                <i id="erreur-logo" class="fas fa-exclamation-triangle"></i>
+                <p id="erreur-message">Un problème lié à la récupération des données est survenu ou la page demandée n'existe pas. Veuillez réessayer.</p>
+            </div>
+
             
-            <section class="liste">
-                <ul class="liste-peluches">
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Norbert</h2>
-                                <img src="images/teddy_1.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>29 €</p>
-                                <!--<div id="button">-->
-                                    <a href="#" class="button">En savoir plus</a>
-                                <!--</div>
-                                <script type="text/javascript" src="index.js"></script>-->
-                            </div>
-                        </div>
-                    </li>
+           <!--Scripts Javascript-->
+            <script src="js/index.js"></script>
 
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Arnold</h2>
-                                <img src="images/teddy_2.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>39 €</p>
-                                <a href="#" class="button">En savoir plus</a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Lenny and Carl</h2>
-                            <img src="images/teddy_3.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>59 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Gustav</h2>
-                            <img src="images/teddy_4.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>45 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                    
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Garfunkel</h2>
-                            <img src="images/teddy_5.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>55 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                </ul>    
-            </section>
+            <script> listeTousProduits() </script>
 
         </main>
 
