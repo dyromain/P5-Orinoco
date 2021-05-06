@@ -107,44 +107,44 @@ getProduits = () =>{
 
 /*Création de la page du produit sélectionné*/
 
-	async function produitInfo(){
-    //Collecter l'URL après le ?id= pour le récupérer uniquement sur l'API
+	async function infoProduit(){
+    //Récupération de l'URL suivi du ?id=//
     idProduit = location.search.substring(4);
     const produitSelect = await getProduits();
     console.log("Voici la page du produit id_"+produitSelect._id);
 
-    //Faire apparaitre la fiche produit initialement en display none
+    //Affichage de la page du produit//
     let section = document.getElementById("section");
-    section.style.display = "bloc";
+    section.style.display = "block";
     
-    //Remplissage de la fiche produit
+    //Elements de la page du produit//
     document.getElementById("photoProduit").setAttribute("src", produitSelect.imageUrl);
     document.getElementById("nomProduit").innerHTML = produitSelect.name;
     document.getElementById("descProduit").innerHTML = produitSelect.description;
     document.getElementById("prixProduit").innerHTML = produitSelect.price / 100 + " euros";
 
     
-    //Selon le type de produit (ligne 3) création des options
-    switch(produitVente){
-    	case "lenses":
+    //Création des options selon le type de produit (ligne 3)//
+    switch(produitsVente){
+		case "teddies":
     	produitSelect.colors.forEach((produit)=>{
     		let optionProduit = document.createElement("option");
-    		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
+    		document.getElementById("choixOption").appendChild(optionProduit).innerHTML = produit;
+    	});
+		break;
+    	case "lenses":
+    	produitSelect.lenses.forEach((produit)=>{
+    		let optionProduit = document.createElement("option");
+    		document.getElementById("choixOption").appendChild(optionProduit).innerHTML = produit;
     	});
     	break;
     	case "furniture":
-    	produitSelected.varnish.forEach((produit)=>{
+    	produitSelect.varnish.forEach((produit)=>{
     		let optionProduit = document.createElement("option");
-    		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
-    	});
-    	break;
-    	case "teddies":
-    	produitSelected.colors.forEach((produit)=>{
-    		let optionProduit = document.createElement("option");
-    		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
-    	});
+    		document.getElementById("choixOption").appendChild(optionProduit).innerHTML = produit;
+    	});    	
     	break;
     	default:
-    	console.log("Merci de renseigner la variable produitVente ligne 2 du fichier script.js");
+    	console.log("Merci d'ajouter une variable produitsVente à ligne 3 du fichier index.js");
     }
 };

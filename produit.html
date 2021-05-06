@@ -19,18 +19,44 @@
             
             <nav>
                 <ul>
-                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#index.html">Accueil</a></li>
                         <li><a href="#"><i class="fas fa-shopping-cart"></i>Mon panier</a></li>
                 </ul>
             </nav>   
             
         </header>
 
-        <main>
+        <main id="bloc-page">
+
+            <div id="erreur">
+                <i id="erreur-logo" class="fas fa-exclamation-triangle"></i>
+                <p id="erreur-message">Un problème lié à la récupération des données est survenu ou la page demandée n'existe pas. Veuillez réessayer.</p>
+            </div>
+
+            <section id="section">
+                <h2 id="nomProduit">Nom du produit</h2>
+                <div class="ficheProduit">
+                    <div class="photo-prdt">
+                        <img src="#" id="photoProduit" alt="Photo du produit">
+                    </div>
+                    <div class="desc-prdt">
+                        <p class="desc-titre">Description :</p>
+                        <p id="descProduit"></p>
+                        <label for="choixOption">Sélectionnez une :</label>
+                        <select name="option" id="choixOption">
+                            <option value="">option</option>
+                        </select>
+                        <p class="desc-prix">Prix :</p>
+                        <p id="prixProduit"></p>
+                            <button id="ajoutProduit">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
-            
+        <script src="js/index.js"></script>
         <script>
-            produitInfo();
+            infoProduit();
             addPanier()
         </script>
 

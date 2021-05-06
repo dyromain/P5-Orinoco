@@ -187,7 +187,7 @@ section a
     background: #A165CA;
     padding: 2%;
     border-radius: 8px;
-    margin-left:33%;
+    margin-left:40%;
 }
 
 section a:hover
@@ -198,7 +198,12 @@ section a:hover
 
 div:nth-child(3) > div > a
 {
-    margin-left: 25%;
+    margin-left: 33%;
+}
+
+div:nth-child(5) > div > a
+{
+    margin-left: 38%;
 }
 
 
