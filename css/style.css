@@ -206,6 +206,24 @@ div:nth-child(5) > div > a
     margin-left: 38%;
 }
 
+/*Page du produit*/
+.ficheProduit
+{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p#descProduit
+{
+    font-weight:normal;
+    margin-bottom:4%;
+}
+
+.desc-prdt > label
+{
+    margin-left: 5%;
+}
 
 /*Footer*/
 

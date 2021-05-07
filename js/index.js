@@ -148,3 +148,18 @@ getProduits = () =>{
     	console.log("Merci d'ajouter une variable produitsVente à ligne 3 du fichier index.js");
     }
 };
+
+ /*Fonction "Ajouter au panier"*/
+
+ addPanier = () =>{
+	//Lorsque l'utilisateur clique sur "Ajouter au panier"//
+	let inputBuy = document.getElementById("ajoutProduit");
+	inputBuy.addEventListener("click", async function() {
+		const produits = await getProduits();
+	//Récupération du panier dans le localStorage et ajout du produit dans le panier//
+	userPanier.push(produits);
+	localStorage.setItem("userPanier", JSON.stringify(userPanier));
+	console.log("Le produit a été ajouté au panier");
+	alert("Ce produit a été ajouté à votre panier")
+});
+};
