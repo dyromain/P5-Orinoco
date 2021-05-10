@@ -120,6 +120,11 @@ nav a:hover
     margin-top:2%;
 }
 
+.liste-produit_bloc
+{
+    height:fit-content;
+}
+
 section img
 {
     width:100%;
@@ -168,8 +173,9 @@ section h2
 .produit-desc
 {
     display:flex;
-    margin-top: 5%;
-    margin-bottom: 4%;
+    margin-top: 2%;
+    max-width:95%;
+    margin-bottom:2%;
 }
 
 section p
@@ -187,23 +193,13 @@ section a
     background: #A165CA;
     padding: 2%;
     border-radius: 8px;
-    margin-left:40%;
+    margin-left:auto;
 }
 
 section a:hover
 {
     font-weight:bold;
     filter:brightness(130%);
-}
-
-div:nth-child(3) > div > a
-{
-    margin-left: 33%;
-}
-
-div:nth-child(5) > div > a
-{
-    margin-left: 38%;
 }
 
 /*Page du produit*/
@@ -227,6 +223,11 @@ p#descProduit
 
 /*Footer*/
 
+footer
+{
+    background-color: #F3E9F1;
+}
+
 .social
 {
     display: flex;
@@ -235,6 +236,7 @@ p#descProduit
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
+    padding-top: 2%;
 }
 
 footer > ul
@@ -246,6 +248,7 @@ footer > ul
     margin-right: auto;
     margin-top: 3%;
     margin-bottom: 3%;
+    padding-bottom: 2%;
 }
 
 footer ul
