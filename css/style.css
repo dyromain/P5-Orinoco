@@ -125,47 +125,47 @@ nav a:hover
     height:fit-content;
 }
 
-section img
+.liste-produit img
 {
     width:100%;
 }
 
-section > div
+.liste-produit > div
 {
     border: 1px solid lightgrey;
     border-radius: 8px;
 }    
 
-section > div:nth-child(1)
+.liste-produit > div:nth-child(1)
 {
     width: 118%;
     margin-right: 1%;
 }
 
-section > div:nth-child(2)
+.liste-produit > div:nth-child(2)
 {
     width: 121%;
     margin-right: 1%;
 }
 
-section > div:nth-child(3)
+.liste-produit > div:nth-child(3)
 {
     margin-right: 1%;
     width: 106%;
 }
 
-section > div:nth-child(4)
+.liste-produit > div:nth-child(4)
 {
     margin-right: 1%;
     width: 122%;
 }
 
-section > div:nth-child(5)
+.liste-produit > div:nth-child(5)
 {
     width: 119%;
 }
 
-section h2
+.liste-produit h2
 {
     text-align: center;
 }
@@ -178,7 +178,7 @@ section h2
     margin-bottom:2%;
 }
 
-section p
+.liste-produit p
 {
     margin-top: 1%;
     margin-bottom: 5%;
@@ -186,7 +186,7 @@ section p
     font-weight:bold;
 }
 
-section a
+.liste-produit a
 {
     color:#000000;
     text-decoration: none; 
@@ -196,16 +196,28 @@ section a
     margin-left:auto;
 }
 
-section a:hover
+.liste-produit a:hover
 {
     font-weight:bold;
     filter:brightness(130%);
 }
 
 /*Page du produit*/
+#nomProduit
+{
+    text-align: center;
+}
+
 .ficheProduit
 {
-    width: 50%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#photoProduit
+{
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -216,9 +228,28 @@ p#descProduit
     margin-bottom:4%;
 }
 
-.desc-prdt > label
+.desc-titre
 {
-    margin-left: 5%;
+    font-weight:bold;
+}
+
+.desc-prix
+{
+    font-weight:bold;
+}
+
+button#ajoutProduit
+{
+    font-family: 'sf_cartoonist_handregular', Arial, sans-serif;
+    font-weight: lighter;
+    border-radius: 8px;
+    background: #A165CA;
+}
+
+button#ajoutProduit a:hover
+{
+    font-weight:bold;
+    filter:brightness(130%);
 }
 
 /*Footer*/
@@ -247,7 +278,6 @@ footer > ul
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
-    margin-bottom: 3%;
     padding-bottom: 2%;
 }
 
@@ -281,9 +311,14 @@ footer a:hover
 }*/
 
 /*Medium devices*/
-/*@media (min-width: 768px) and (max-width:992px){
-
-}*/
+@media (min-width: 768px) and (max-width:992px)
+{
+    .accueil-txt 
+    {
+        width: 300px;
+        font-size: 2.5em;
+    }
+}
 
 /*large devices*/
 /*media="screen and (min-width: 992px)"*/
