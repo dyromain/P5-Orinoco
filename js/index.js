@@ -1,33 +1,11 @@
 /*Génération de l'URL de l'API*/
 
 const produitsVente = "teddies"
-const APIURL = "http://localhost:3000/api/" + produitsVente + "/";
+const URLAPI = "http://localhost:3000/api/" + produitsVente + "/";
 
 //id du produit pour pouvoir effectuer un tri dans l'API//
 
 let idProduit = "";
-
-/*Préparation des requis pour le script*/
-
-/*Il doit y avoir un panier dans le localStorage du navigateur de l'utilisateur.
-S'il n'y a pas de panier dans le localStorage, il faut le créer et l'envoyer dans le localStorage*/
-
-if(localStorage.getItem("panierUser")){
-	console.log("Panier de l'utilisateur présent dans le localStorage");
-}else{
-	console.log("Panier absent. Création et envoi du panier dans le localStorage");
-  	//Tableau de produits//
-  	let panierInit = [];
-  	localStorage.setItem("panierUser", JSON.stringify(panierInit));
-  };
-
-  	//Tableau et objet requis par l'API//
-  	let contact;
-  	let products = [];
-
-	//Le panier est désormais créé pour l'utilisateur//
-	let userPanier = JSON.parse(localStorage.getItem("panierUser"));
-
 
 /*Appel de l'API*/
 
@@ -50,7 +28,7 @@ getProduits = () =>{
 				console.log("Une erreur avec la connexion API est survenue");
 			}
 		}
-		request.open("GET", APIURL + idProduit);
+		request.open("GET", URLAPI + idProduit);
 		request.send();
 	});
 };
@@ -149,17 +127,106 @@ getProduits = () =>{
     }
 };
 
- /*Fonction "Ajouter au panier"*/
+ /*Panier*/
 
- addPanier = () =>{
+	//Vérification et initialisation du panier//
+	if (localStorage.getItem("panierUser")) {
+	console.log("Panier de l'utilisateur présent dans le localStorage");
+	} else {
+	console.log("Panier inexistant. Création et envoi du panier dans le localStorage");
+
+  	//Tableau de produits//
+  	let initPanier = [];
+  	localStorage.setItem("panierUser", JSON.stringify(initPanier));
+  	};
+
+  	//Tableau et objet requis par l'API//
+  	let contact;
+  	let products = [];
+
+	//Création du panier de l'utilisateur//
+	let panierUser = JSON.parse(localStorage.getItem("panierUser"));
+
+	ajoutPanier = () =>{
 	//Lorsque l'utilisateur clique sur "Ajouter au panier"//
 	let inputBuy = document.getElementById("ajoutProduit");
 	inputBuy.addEventListener("click", async function() {
 		const produits = await getProduits();
 	//Récupération du panier dans le localStorage et ajout du produit dans le panier//
-	userPanier.push(produits);
-	localStorage.setItem("userPanier", JSON.stringify(userPanier));
+	panierUser.push(produits);
+	localStorage.setItem("panierUser", JSON.stringify(panierUser));
 	console.log("Le produit a été ajouté au panier");
 	alert("Ce produit a été ajouté à votre panier")
-});
-};
+	});
+	};
+
+	//Affichage du nombre de produits dans le panier//
+	function nombrePanierAccueil() {
+	let panierAccueil = document.getElementById("panierAccueil");
+	panierAccueil.textContent = panierUser.length;
+  }
+  
+  	function nombrePanierProduit() {
+	let panierProduit = document.getElementById("panierProduit");
+	panierProduit.textContent = panierUser.length;
+  }
+
+/*Page Panier*/
+
+pagePanier = () => {
+	if (panierUser.length > 0) {
+	  document.getElementById("panierVide").remove();
+  
+	  //Tableau récapitulatif//
+	  let resume = document.createElement("table");
+	  let ligne = document.createElement("tr");
+	  let resumeImg = document.createElement("th");
+	  let resumeNom = document.createElement("th");
+	  let resumePrixIndiv = document.createElement("th");
+	  let resumeSuppr = document.createElement("th");
+	  let ligneTotal = document.createElement("tr");
+	  let colonneTotal = document.createElement("th");
+	  let resumePrixaPayer = document.createElement("td");
+  
+	  //Placement de la structure dans la page
+	  let resumePanier = document.getElementById("resumePanier");
+	  resumePanier.appendChild(recap);
+	  resume.appendChild(ligne);
+	  ligne.appendChild(resumeImg);
+	  ligne.appendChild(resumeNom);
+	  ligne.appendChild(resumePrixIndiv);
+	  ligne.appendChild(resumeSuppr);
+  
+	  //contenu des entetes
+	  resumeImg.textContent = "Produit";
+	  resumeNom.textContent = "Nom";
+	  resumePrixIndiv.textContent = "Prix";
+	  resumeSuppr.textContent = "Annuler ?";
+  
+  
+   //Boucle FOR pour affichage des articles dans le panier
+	   
+	  for (let i = 0; i<panier.length; i++) {
+	  
+		//Création des lignes du tableau
+  
+		let ligneProduit = document.createElement("tr");
+		let imgProduit = document.createElement("img");
+		let nomProduit = document.createElement("td");
+		let prixIndivProduit = document.createElement("td");
+		let supprProduit = document.createElement("td");
+		let retirerProduit = document.createElement("i");
+  
+		//Attribution des class ou Id
+		ligneProduit.setAttribute("id", "produit" + [i]);
+		imgProduit.setAttribute("class", "img-produit");
+		imgProduit.setAttribute("src", panier[i].imageUrl);
+		imgProduit.setAttribute("alt", "Photo du produit commandé");
+		retirerProduit.setAttribute("id", "suppr" + [i]);
+		retirerProduit.setAttribute("class", "fas fa-times-circle fa-1x");
+		retirerProduit.setAttribute("title", "Retirer le produit ?");
+  
+		console.log(i);
+	  }
+	} 
+}

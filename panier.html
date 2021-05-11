@@ -19,7 +19,7 @@
             
             <nav>
                 <ul>
-                        <li><a href="#">Accueil</a></li>
+                        <li><a href="index.html">Accueil</a></li>
                         <li><a href="#"><i class="fas fa-shopping-cart"></i>Mon panier</a></li>
                 </ul>
             </nav>   
@@ -27,87 +27,74 @@
         </header>
 
         <main>
-            <!--Présentation accueil-->
-            <div class="accueil">
-                <div class="accueil-img">
-                    <img src="images/teddy-accueil.png" alt="Photo d'ours en peluche" /> 
-                </div>
-                <div class="accueil-txt">
-                    <p>Des ours en peluche faits à la main</p>
-                </div>          
-            </div>
-            
-            <!--Liste des peluches-->
-            
-            <!--<section class="liste">
-                <ul class="liste-peluches">
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Norbert</h2>
-                                <img src="images/teddy_1.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>29 €</p>
-                                                                    <a href="#" class="button">En savoir plus</a>
-                                <!--</div>
-                                <script type="text/javascript" src="index.js"></script>
-                            </div>
-                        </div>
-                    </li>
+            <section class="recap-commande">
+              <div id="resumePanier">
+                <p id="panierVide">Votre panier est vide.</p>
+              </div>
+            </section>
 
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Arnold</h2>
-                                <img src="images/teddy_2.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>39 €</p>
-                                <a href="#" class="button">En savoir plus</a>
-                            </div>
-                        </div>
-                    </li>
+            <section class="formulaire">    
+              <div class="info-user">
+                <form method="post" name="form-info" id="form">
+                  <div class="form-user">
+                    <label for="nom">Nom</label>
+                    <input
+                      type="text"
+                      id="nom"
+                      name="nom"
+                      class="form-action"
+                      required
+                      placeholder="Insérez votre nom de famille"
+                    />
+                  </div>
+                  <div class="form-user">
+                    <label for="prenom">Prénom</label>
+                    <input
+                      type="text"
+                      id="prenom"
+                      name="prenom"
+                      class="form-action"
+                      required
+                      placeholder="Insérez votre prénom"
+                    />
+                  </div>
+                  <div class="form-user">
+                    <label for="email">Adresse e-mail</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-action"
+                      required
+                      placeholder="Insérez votre adresse e-mail"
+                    />
+                  </div>
+                  <div class="form-user">
+                    <label for="adresse">Adresse</label>
+                    <input
+                      type="text"
+                      id="adresse"
+                      name="adresse"
+                      class="form-action"
+                      required
+                      placeholder="Insérez votre adresse postale"
+                    />
+                  </div>
+    
+                  <button id="commander" type="submit" name="commander">
+                    Commander
+                  </button>
+                </form>
+              </div>
+            </section>
+          </main>
 
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Lenny and Carl</h2>
-                            <img src="images/teddy_3.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>59 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
+          <script src="js/index.js"></script>
 
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Gustav</h2>
-                            <img src="images/teddy_4.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>45 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                    
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Garfunkel</h2>
-                            <img src="images/teddy_5.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>55 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                </ul>    
-            </section>-->
-
-        </main>
+          <script>pagePanier();</script>
+          <script>
+            confirmCommande();
+          </script>
 
         <footer>
 

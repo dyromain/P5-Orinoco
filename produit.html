@@ -20,7 +20,7 @@
             <nav>
                 <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="#"><i class="fas fa-shopping-cart"></i>Mon panier</a></li>
+                        <li><a href="panier.html"><i class="fas fa-shopping-cart"></i>Mon panier(<span id="panierProduit"></span></a>)</li>
                 </ul>
             </nav>   
             
@@ -57,8 +57,10 @@
             <script src="js/index.js"></script>
             <script>
                 infoProduit();
-                addPanier()
+                ajoutPanier()
             </script> 
+            <script> nombrePanierProduit(); </script>
+            
 
         </main>
 
