@@ -263,8 +263,8 @@ colonneTotal.setAttribute("colspan", "2");
 
 //Calcule de l'addition total
 let sommeTotal = 0;
-panier.forEach((panier) => {
-sommeTotal += panier.price / 100;
+panierUser.forEach((panierUser) => {
+sommeTotal += panierUser.price / 100;
 });
 
 //Affichage du prix total à payer dans l'addition
