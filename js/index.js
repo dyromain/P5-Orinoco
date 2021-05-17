@@ -190,43 +190,98 @@ pagePanier = () => {
   
 	  //Placement de la structure dans la page
 	  let resumePanier = document.getElementById("resumePanier");
-	  resumePanier.appendChild(recap);
+	  resumePanier.appendChild(resume);
 	  resume.appendChild(ligne);
 	  ligne.appendChild(resumeImg);
 	  ligne.appendChild(resumeNom);
 	  ligne.appendChild(resumePrixIndiv);
 	  ligne.appendChild(resumeSuppr);
   
-	  //contenu des entetes
+	  //Entêtes 
 	  resumeImg.textContent = "Produit";
 	  resumeNom.textContent = "Nom";
 	  resumePrixIndiv.textContent = "Prix";
 	  resumeSuppr.textContent = "Annuler ?";
   
   
-   //Boucle FOR pour affichage des articles dans le panier
-	   
-	  for (let i = 0; i<panier.length; i++) {
+	//Boucle FOR pour affichage des articles dans le panier
+	 for (let i = 0; i<panier.length; i++) {
 	  
-		//Création des lignes du tableau
+	//Création des lignes du tableau
+	let ligneProduit = document.createElement("tr");
+	let imgProduit = document.createElement("img");
+	let nomProduit = document.createElement("td");
+	let prixIndivProduit = document.createElement("td");
+	let supprProduit = document.createElement("td");
+	let retirerProduit = document.createElement("i");
   
-		let ligneProduit = document.createElement("tr");
-		let imgProduit = document.createElement("img");
-		let nomProduit = document.createElement("td");
-		let prixIndivProduit = document.createElement("td");
-		let supprProduit = document.createElement("td");
-		let retirerProduit = document.createElement("i");
+	//Attribution des class ou Id
+	ligneProduit.setAttribute("id", "produit" + [i]);
+	imgProduit.setAttribute("class", "img-produit");
+	imgProduit.setAttribute("src", panier[i].imageUrl);
+	imgProduit.setAttribute("alt", "Photo du produit commandé");
+	retirerProduit.setAttribute("id", "suppr" + [i]);
+	retirerProduit.setAttribute("class", "fas fa-times-circle");
+	retirerProduit.setAttribute("title", "Retirer le produit ?");
   
-		//Attribution des class ou Id
-		ligneProduit.setAttribute("id", "produit" + [i]);
-		imgProduit.setAttribute("class", "img-produit");
-		imgProduit.setAttribute("src", panier[i].imageUrl);
-		imgProduit.setAttribute("alt", "Photo du produit commandé");
-		retirerProduit.setAttribute("id", "suppr" + [i]);
-		retirerProduit.setAttribute("class", "fas fa-times-circle fa-1x");
-		retirerProduit.setAttribute("title", "Retirer le produit ?");
-  
-		console.log(i);
-	  }
-	} 
+	console.log(i);
+
+	
+	//Supprimer un produit du panier
+	retirerProduit.addEventListener("click", (event) => {this.annulerProduit(i);})
+   
+    
+    //Agencement de la structure HTML
+	recap.appendChild(ligneProduit);
+	ligneProduit.appendChild(imgProduit);
+	ligneProduit.appendChild(nomProduit);
+	ligneProduit.appendChild(prixIndivProduit);
+	ligneProduit.appendChild(supprProduit);
+	supprProduit.appendChild(retirerProduit);
+
+	//Contenu de chaque ligne
+
+	nomProduit.textContent = panier[i].name;
+	prixIndivProduit.textContent = panier[i].price / 100 + " €";
+	console.log(panier[i].name);
+
+
+};
+
+
+//Dernière ligne du tableau : Total
+resume.appendChild(ligneTotal);
+ligneTotal.appendChild(colonneTotal);
+ligneTotal.setAttribute("id", "ligneSomme");
+colonneTotal.textContent = "Total à payer";
+ligneTotal.appendChild(resumePrixaPayer);
+
+resumePrixaPayer.setAttribute("id", "sommeTotal");
+resumePrixaPayer.setAttribute("colspan", "4");
+colonneTotal.setAttribute("id", "colonneTotal");
+colonneTotal.setAttribute("colspan", "2");
+
+//Calcule de l'addition total
+let sommeTotal = 0;
+panier.forEach((panier) => {
+sommeTotal += panier.price / 100;
+});
+
+//Affichage du prix total à payer dans l'addition
+console.log(sommeTotal);
+document.getElementById("sommeTotal").textContent = sommeTotal + " €";
 }
+};
+
+
+
+annulerProduit = (i) => {
+panier.splice(i, 1);
+localStorage.clear();
+// Mise à jour du nouveau panier avec suppression de l'article
+localStorage.setItem("panier", JSON.stringify(panierUser));
+//Mise à jour de la page pour affichage de la suppression au client
+window.location.reload();
+};  
+	  
+	
