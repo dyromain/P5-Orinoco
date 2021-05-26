@@ -26,7 +26,7 @@
         </header>
 
         <main>
-            <section class="recap-commande">
+          <section class="recap-commande">
               <div id="resumePanier">
                 <p id="panierVide">Votre panier est vide.</p>
               </div>
@@ -34,14 +34,14 @@
 
             <section class="formulaire">    
               <div class="info-user">
-                <form method="post" name="form-info" id="form">
+                <form method="post" name="form-info">
                   <div class="form-user">
                     <label for="nom">Nom</label>
                     <input
                       type="text"
                       id="nom"
                       name="nom"
-                      class="form-action"
+                      class="form-required"
                       required
                       placeholder="Insérez votre nom de famille"
                     />
@@ -52,7 +52,7 @@
                       type="text"
                       id="prenom"
                       name="prenom"
-                      class="form-action"
+                      class="form-required"
                       required
                       placeholder="Insérez votre prénom"
                     />
@@ -63,7 +63,7 @@
                       type="email"
                       id="email"
                       name="email"
-                      class="form-action"
+                      class="form-required"
                       required
                       placeholder="Insérez votre adresse e-mail"
                     />
@@ -74,7 +74,7 @@
                       type="text"
                       id="adresse"
                       name="adresse"
-                      class="form-action"
+                      class="form-required"
                       required
                       placeholder="Insérez votre adresse postale"
                     />
@@ -88,15 +88,12 @@
                       type="text"
                       id="ville"
                       name="ville"
-                      class="form-action"
+                      class="form-required"
                       required
                       placeholder="Insérez votre ville"
                     />
                   </div>
-    
-                  <button id="commander" type="submit" name="commander">
-                    Commander
-                  </button>
+                  <input type="button" value="Commander" class="commande" id="submitOrder">
                 </form>
               </div>
             </section>
@@ -105,7 +102,7 @@
           <script src="js/index.js"></script>
 
           <script>pagePanier();</script>
-          <script>confirmCommande();</script>
+          <script>validerCommande();</script>
 
         <footer>
 

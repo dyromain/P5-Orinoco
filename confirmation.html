@@ -27,87 +27,29 @@
         </header>
 
         <main>
-            <!--Présentation accueil-->
-            <div class="accueil">
-                <div class="accueil-img">
-                    <img src="images/teddy-accueil.png" alt="Photo d'ours en peluche" /> 
-                </div>
-                <div class="accueil-txt">
-                    <p>Des ours en peluche faits à la main</p>
-                </div>          
-            </div>
-            
-            <!--Liste des peluches-->
-            
-            <!--<section class="liste">
-                <ul class="liste-peluches">
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Norbert</h2>
-                                <img src="images/teddy_1.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>29 €</p>
-                                                                    <a href="#" class="button">En savoir plus</a>
-                                <!--</div>
-                                <script type="text/javascript" src="index.js"></script>
-                            </div>
-                        </div>
-                    </li>
+           <section class="merci">
+               <p>Bonjour <span id="firstName"></span>,
+                <br>
+                Nous vous remercions d'avoir passé votre commande sur Orinoco.
+               <br>              
+                Vous recevrez un lien de suivi dès que votre commande n°<span id="orderId"></span> sera expédiée.
+                <br>                
+                Si vous avez des questions au sujet de votre commande, n'hésitez pas à nous contacter sur service.client@orinoco.com.</p>
+            </section>
 
-                    <li class="peluche">
-                        <div class="carte">
-                                <h2 class="nom-peluche">Arnold</h2>
-                                <img src="images/teddy_2.jpg" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="carte-desc">
-                                <p>39 €</p>
-                                <a href="#" class="button">En savoir plus</a>
-                            </div>
-                        </div>
-                    </li>
+            <section class="recap-commande">           
+                <h2>Récapitulatif de votre commande</h2>
+                <div id="resumeCommande"></div>
+            </section>
 
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Lenny and Carl</h2>
-                            <img src="images/teddy_3.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>59 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
+            <script src="js/index.js"></script>
 
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Gustav</h2>
-                            <img src="images/teddy_4.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>45 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                    
-                    <li class="peluche">
-                        <div class="carte">
-                            <h2 class="nom-peluche">Garfunkel</h2>
-                            <img src="images/teddy_5.jpg" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="carte-desc">
-                                    <p>55 €</p>
-                                    <a href="#" class="button">En savoir plus</a>
-                                </div>
-                        </div>
-                    </li>
-
-                </ul>    
-            </section>-->
-
+            <script>resultatCommande();</script>
+            <script>confirmListe();</script>
+        
         </main>
+
+
 
         <footer>
 

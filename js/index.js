@@ -5,7 +5,7 @@ const URLAPI = "http://localhost:3000/api/" + produitsVente + "/";
 
 //id du produit pour pouvoir effectuer un tri dans l'API//
 
-let idProduit = "";
+let produitID = "";
 
 /*Appel de l'API*/
 
@@ -28,7 +28,7 @@ getProduits = () =>{
 				console.log("Une erreur avec la connexion API est survenue");
 			}
 		}
-		request.open("GET", URLAPI + idProduit);
+		request.open("GET", URLAPI + produitID);
 		request.send();
 	});
 };
@@ -87,7 +87,7 @@ getProduits = () =>{
 
 	async function infoProduit(){
     //Récupération de l'URL suivi du ?id=//
-    idProduit = location.search.substring(4);
+    produitID = location.search.substring(4);
     const produitSelect = await getProduits();
     console.log("Voici la page du produit id_"+produitSelect._id);
 
@@ -144,7 +144,7 @@ getProduits = () =>{
   	let contact;
   	let products = [];
 
-	//Création du panier de l'utilisateur//
+	//Création du panier de l'utilisateur// 
 	let panierUser = JSON.parse(localStorage.getItem("panierUser"));
 
 	ajoutPanier = () =>{
@@ -327,12 +327,12 @@ pagePanier = () => {
 	if (verifCaractereSpec.test(adresse) == true || adresse == "") {
 	verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
 	} else {
-	  console.log(" Adresse postale valide");
+	  console.log("Adresse postale valide");
 	}
 	//Test de la ville
 	if (
 	  (verifCaractereSpec.test(ville) == true ||
-	  verifMessage.test(ville) == true) ||
+	  verifNombre .test(ville) == true) ||
 	  ville == ""
 	) {
 	  verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
@@ -369,155 +369,155 @@ pagePanier = () => {
 	  return true;
 	}
   };
-  
+
 /*Envoi du formulaire*/
-  //Fonction request POST de l'API /*
+
+  //Fonction request post de l'API
   envoiForm = (formRequest) => {
-  return new Promise((resolve)=>{
-	let request = new XMLHttpRequest();
-	request.onreadystatechange = function() {
-	if (this.readyState == XMLHttpRequest.DONE && this.status == 201) 
-	{
-  //Sauvegarde du retour de l'API dans la sessionStorage pour affichage dans confirmation.html
-	sessionStorage.setItem("order", this.responseText);
+	return new Promise((resolve)=>{
+		let request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (this.readyState == XMLHttpRequest.DONE && this.status == 201) {
+		//Sauvegarde du retour de l'API dans la sessionStorage --> affichage dans confirmation.html
+		sessionStorage.setItem("order", this.responseText);
 
-  //Chargement de la page de confirmation
-	document.forms["form-info"].action = './confirmation.html';
-	document.forms["form-info"].submit();
+		//Chargement de la page de confirmation
+		document.forms["form-info"].action = './confirmation.html';
+		document.forms["form-info"].submit();
 
-	resolve(JSON.parse(this.responseText));
+		resolve(JSON.parse(this.responseText));
+	} else {
 	}
 };
-request.open("POST", URLAPI + "order");
+request.open("POST", APIURL + "order");
 request.setRequestHeader("Content-Type", "application/json");
 request.send(formRequest);
+
 });
 };
-  
-  confirmCommande = () => {
-	//Ecoute de l'event click du formulaire
-	let btnConfirm = document.getElementById("form");
-	btnConfirm.addEventListener("click", function(){
-	//Vérification du panier et du formulaire
-	if (verifPanier() == true && verifContenu() != null) {
-	console.log("L'envoi peut être effectué");
-  
+
+//Au click sur le bouton "Commander" du formulaire
+validerCommande = () =>{
+  //Ecoute de l'event click du formulaire
+  let commande = document.getElementById("submitOrder");
+  commande.addEventListener("click", function(){
+	//Lancement des verifications du panier et du form => si Ok envoi
+	if(verifPanier() == true && verifContenu() != null){
+		console.log("L'envoi peut être effectué");
 	//Création de l'objet à envoyer
-	let commande = {
-	    contact,
+	let objet = {
+		contact,
 		products
 	};
-	//Conversion en JSON
-	let envoiForm = JSON.stringify(commande);
-	envoiForm(envoiForm, URLAPI);
-	console.log(commande);
-   
-	//Une fois la commande effectuée retour à l'état initial des tableaux/objet/localStorage
-	contact = {};
-	products = [];
-	localStorage.clear();
-	} else {
-	console.log("Erreur");
-	  }
-	});
-  }; 
-  
-  /*//Affichage des informations sur la page de confirmation
-  resultatCommande = () => {
-	if (sessionStorage.getItem("order") != null) {
-	//Parse de la session storage
-	  let order = JSON.parse(sessionStorage.getItem("order"));
-	//Implantation de prénom et de l'id de commande dans le html sur la page de confirmation
-	  document.getElementById("firstName").innerHTML = order.contact.firstName;
-	  document.getElementById("orderId").innerHTML = order.orderId;
-	  console.log(order);
+	console.log(objet);
+   //Conversion en JSON
+   let formRequest = JSON.stringify(objet);
+   console.log(formRequest);
+   //Envoi de l'objet via la function
+   envoiForm(formRequest);
 
-	//Suppression de la clé du sessionStorage pour renvoyer au else si actualisation de la page ou via url direct
-	  sessionStorage.removeItem("order");
-	}
-	//Redirection vers l'accueil
-	else {
-	  alert("Aucune commande n'a été effectuée.");
-	  window.location = "./index.html";
-	}
-  }; /* */
+   //Une fois la commande passée : retour à l'état initial des tableaux/objet/localStorage
+   contact = {};
+   products = [];
+   localStorage.clear();
+} else {
+   console.log("Erreur");
+};
+});
+};
+
+/*Affichage des informations sur la page de confirmation*/
+resultatCommande = () => {
+  if(sessionStorage.getItem("order") != null){
+  //Parse du session storage
+  let order = JSON.parse(sessionStorage.getItem("order"));
+  //Prénom et id de la commande sur la page de confirmation
+  document.getElementById("firstName").innerHTML = order.contact.firstName
+  document.getElementById("orderId").innerHTML = order.orderId
   
-  /*//------Tableau de recap de la commande dans la page de confirmation------// /*
-  
-  confirmRecap = () => {
-	//Création de la structure du tableau récapitulatif
-	let recapConfirm = document.createElement("table");
-	let ligneConfirm = document.createElement("tr");
-	let confirmPhoto = document.createElement("th");
-	let confirmNom = document.createElement("th");
-	let confirmPrixUnitaire = document.createElement("th");
-	let ligneConfirmTotal = document.createElement("tr");
-	let colonneConfirmTotal = document.createElement("th");
-	let confirmPrixPaye = document.createElement("td");
-  
-	//Placement de la structure dans la page
-	let confirmPanier = document.getElementById("confirmation-recap");
-	confirmPanier.appendChild(recapConfirm);
-	recapConfirm.appendChild(ligneConfirm);
-	ligneConfirm.appendChild(confirmPhoto);
-	ligneConfirm.appendChild(confirmNom);
-	ligneConfirm.appendChild(confirmPrixUnitaire); /*
-  
-	//contenu des entetes
-	confirmPhoto.textContent = "Article";
-	confirmNom.textContent = "Nom";
-	confirmPrixUnitaire.textContent = "Prix";
-  
-	//Incrémentation de l'id des lignes pour chaque produit
-	let i = 0;
-	let order = JSON.parse(sessionStorage.getItem("order"));
-  
-	order.products.forEach((orderArticle) => {
-	  //Création de la ligne
-	  let ligneConfirmArticle = document.createElement("tr");
-	  let photoConfirmArticle = document.createElement("img");
-	  let nomConfirmArticle = document.createElement("td");
-	  let prixUnitConfirmArticle = document.createElement("td");
-  
-	  //Attribution des class pour le css
-	  ligneConfirmArticle.setAttribute("id", "article_acheté" + i);
-	  photoConfirmArticle.setAttribute("class", "photo_article_acheté");
-	  photoConfirmArticle.setAttribute("src", orderArticle.imageUrl);
-	  photoConfirmArticle.setAttribute("alt", "Photo de l'article acheté");
-  
-	  //Insertion dans le HTML
-	  recapConfirm.appendChild(ligneConfirmArticle);
-	  ligneConfirmArticle.appendChild(photoConfirmArticle);
-	  ligneConfirmArticle.appendChild(nomConfirmArticle);
-	  ligneConfirmArticle.appendChild(prixUnitConfirmArticle);
-  
-	  //Contenu des lignes
-  
-	  nomConfirmArticle.textContent = orderArticle.name;
-	  prixUnitConfirmArticle.textContent = orderArticle.price / 100 + " €";
-	});
-  
-	//Dernière ligne du tableau : Total
-	recapConfirm.appendChild(ligneConfirmTotal);
-	ligneConfirmTotal.appendChild(colonneConfirmTotal);
-	ligneConfirmTotal.setAttribute("id", "ligneSomme");
-	colonneConfirmTotal.textContent = "Total payé";
-	ligneConfirmTotal.appendChild(confirmPrixPaye);
-  
-	confirmPrixPaye.setAttribute("id", "sommeConfirmTotal");
-	confirmPrixPaye.setAttribute("colspan", "4");
-	colonneConfirmTotal.setAttribute("id", "colonneConfirmTotal");
-	colonneConfirmTotal.setAttribute("colspan", "2");
-  
-	//Calcule de l'addition total
-	let sommeConfirmTotal = 0;
-	order.products.forEach((orderArticle) => {
-	  sommeConfirmTotal += orderArticle.price / 100;
-	});
-  
-	//Affichage du prix total à payer dans l'addition
-	console.log(sommeConfirmTotal);
-	document.getElementById("sommeConfirmTotal").textContent =
-	  sommeConfirmTotal + " €";
-  };
-  */ /* */ /* /* */
+  //Suppression de la clé du sessionStorage pour renvoyer au else si actualisation de la page ou via url direct
+  sessionStorage.removeItem("order");
+} else {
+//avertissement et redirection vers l'accueil
+alert("Vous n'avez passé aucune commande");
+window.open("./index.html");
+}
+};
+
+//------Tableau de recap de la commande dans la page de confirmation------// /*
+
+confirmListe = () => {
+  //Création de la structure du tableau récapitulatif
+  //Tableau récapitulatif//
+  let confirmResume = document.createElement("table");
+  let confirmLigne = document.createElement("tr");
+  let confirmImg = document.createElement("th");
+  let confirmNom = document.createElement("th");
+  let confirmPrixIndiv = document.createElement("th");
+  let confirmLigneTotal = document.createElement("tr");
+  let confirmColonneTotal = document.createElement("th");
+  let confirmPrixTotal = document.createElement("td");
+
+  //Structure dans la page
+  let confirmPanier = document.getElementById("resumeCommande");
+  confirmPanier.appendChild(confirmResume);
+  confirmResume.appendChild(confirmLigne);
+  confirmLigne.appendChild(confirmImg);
+  confirmLigne.appendChild(confirmNom);
+  confirmLigne.appendChild(confirmPrixIndiv);
+
+  //Entêtes
+  confirmImg.textContent = "Produit";
+  confirmNom.textContent = "Nom";
+  confirmPrixIndiv.textContent = "Prix";
+
+  //Incrémentation de l'id des lignes pour chaque produit
+  let i = 0;
+  let order = JSON.parse(sessionStorage.getItem("order"));
+
+  order.products.forEach((orderProduct) => {
+
+  //Création de la ligne
+  let confirmLigneProduit = document.createElement("tr");
+  let confirmImgProduit = document.createElement("img");
+  let confirmNomProduit = document.createElement("td");
+  let confirmPrixIndivProduit = document.createElement("td");
+
+  //Attribution des class pour le css
+  confirmLigneProduit.setAttribute("id", "produit-commande" + i);
+  confirmImgProduit.setAttribute("class", "produit-img-commande");
+  confirmImgProduit.setAttribute("src", orderProduct.imageUrl);
+  confirmImgProduit.setAttribute("alt", "Photo du produit commandé");
+
+  //Insertion dans le HTML
+  confirmResume.appendChild(confirmLigneProduit);
+  confirmLigneProduit.appendChild(confirmImgArticle);
+  confirmLigneProduit.appendChild(confirmNomArticle);
+  confirmLigneProduit.appendChild(confirmPrixIndivProduit);
+
+  //Contenu des lignes
+  confirmNomProduit.textContent = orderProduct.name;
+  confirmPrixIndivProduit.textContent = orderProduct.price / 100 + " €";
+  });
+
+  //Dernière ligne du tableau : Total
+  confirmResume.appendChild(confirmLigneProduit);
+  confirmLigneTotal.appendChild(confirmColonneTotal);
+  confirmLigneTotal.setAttribute("id", "ligne-total");
+  confirmColonneTotal.textContent = "Montant total";
+  confirmLigneTotal.appendChild(confirmPrixTotal);
+
+  confirmPrixTotal.setAttribute("id", "additionTotal");
+  confirmColonneTotal.setAttribute("id", "colonneConfirmTotal");
+
+  //Calcule de l'addition total
+  let additionTotal = 0;
+  order.products.forEach((orderProduct) => {
+  additionTotal += orderProduct.price / 100;
+  });
+
+  //Affichage du prix total à payer dans l'addition
+  console.log(additionTotal);
+  document.getElementById("additionTotal").textContent =
+  additionTotal + " €";
+};
