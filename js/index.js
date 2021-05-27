@@ -382,24 +382,30 @@ pagePanier = () => {
 		sessionStorage.setItem("order", this.responseText);
 
 		//Chargement de la page de confirmation
-		document.forms["form-info"].action = './confirmation.html';
+		/*document.forms["form-info"].action = './confirmation.html';
 		document.forms["form-info"].submit();
 
 		resolve(JSON.parse(this.responseText));
 	} else {
 	}
-};
-request.open("POST", APIURL + "order");
-request.setRequestHeader("Content-Type", "application/json");
-request.send(formRequest);
+};*/
 
+		window.location.href="./confirmation.html";
+        resolve(JSON.parse(this.responseText));
+        console.log(this.status);
+    }
+};
+		request.open("POST", APIURL + "order");
+		request.setRequestHeader("Content-Type", "application/json");
+		request.send(formRequest);
+		console.log(formRequest)
 });
 };
 
 //Au click sur le bouton "Commander" du formulaire
 validerCommande = () =>{
   //Ecoute de l'event click du formulaire
-  let commande = document.getElementById("submitOrder");
+  let commande = document.getElementById("formConfirm");
   commande.addEventListener("click", function(){
 	//Lancement des verifications du panier et du form => si Ok envoi
 	if(verifPanier() == true && verifContenu() != null){
@@ -420,29 +426,28 @@ validerCommande = () =>{
    contact = {};
    products = [];
    localStorage.clear();
+   console.log("Localstorage vidé");
 } else {
    console.log("Erreur");
 };
 });
 };
-
-/*Affichage des informations sur la page de confirmation*/
-resultatCommande = () => {
-  if(sessionStorage.getItem("order") != null){
-  //Parse du session storage
-  let order = JSON.parse(sessionStorage.getItem("order"));
-  //Prénom et id de la commande sur la page de confirmation
-  document.getElementById("firstName").innerHTML = order.contact.firstName
-  document.getElementById("orderId").innerHTML = order.orderId
   
-  //Suppression de la clé du sessionStorage pour renvoyer au else si actualisation de la page ou via url direct
-  sessionStorage.removeItem("order");
-} else {
-//avertissement et redirection vers l'accueil
-alert("Vous n'avez passé aucune commande");
-window.open("./index.html");
-}
-};
+  //Récupération des informations pour affichage sur la page de confirmation
+  resultatCommande = () => {
+	if (sessionStorage.getItem("order") != null) {
+	  let order = JSON.parse(sessionStorage.getItem("order"));
+	  document.getElementById("firstName").innerHTML = order.contact.firstName;
+	  document.getElementById("orderId").innerHTML = order.orderId;
+	  console.log(order);
+	  sessionStorage.removeItem("order");
+	}
+	//Redirection vers l'accueil
+	else {
+	  alert("Merci pour vote commande. A bientôt");
+	  window.location = "./index.html";
+	}
+  };
 
 //------Tableau de recap de la commande dans la page de confirmation------// /*
 
