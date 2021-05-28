@@ -9,7 +9,7 @@ let produitID = "";
 
 /*Appel de l'API*/
 
-getProduits = () =>{
+getProducts = () =>{
 	return new Promise((resolve) =>{
 		let request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
@@ -37,7 +37,7 @@ getProduits = () =>{
 
 		//Création de la liste de produits en vente sur la page d'accueil//
 		async function listeTousProduits(){
-		const produits = await getProduits();
+		const produits = await getProducts();
 
 		//Création de la section avec la liste des produits//
 		let listeProduit = document.createElement("section")
@@ -88,7 +88,7 @@ getProduits = () =>{
 	async function infoProduit(){
     //Récupération de l'URL suivi du ?id=//
     produitID = location.search.substring(4);
-    const produitSelect = await getProduits();
+    const produitSelect = await getProducts();
     console.log("Voici la page du produit id_"+produitSelect._id);
 
     //Affichage de la page du produit//
@@ -151,7 +151,7 @@ getProduits = () =>{
 	//Lorsque l'utilisateur clique sur "Ajouter au panier"//
 	let inputBuy = document.getElementById("ajoutProduit");
 	inputBuy.addEventListener("click", async function() {
-		const produits = await getProduits();
+		const produits = await getProducts();
 	//Récupération du panier dans le localStorage et ajout du produit dans le panier//
 	panierUser.push(produits);
 	localStorage.setItem("panierUser", JSON.stringify(panierUser));
@@ -204,7 +204,7 @@ pagePanier = () => {
 	  resumeSuppr.textContent = "Retirer ?";
   
   
-	//Boucle FOR pour affichage des articles dans le panier
+	//Boucle FOR pour affichage des produits dans le panier
 	 for (let i = 0; i<panierUser.length; i++) {
 	  
 	//Création des lignes du tableau
@@ -271,7 +271,7 @@ pagePanier = () => {
 	retraitProduit = (i) => {
 	panierUser.splice(i, 1);
 	localStorage.clear();
-	//Mise à jour du nouveau panier avec suppression de l'article
+	//Mise à jour du nouveau panier avec suppression du produit
 	localStorage.setItem("panierUser", JSON.stringify(panierUser));
 	//Mise à jour de la page pour affichage de la suppression au client
 	window.location.reload();
@@ -365,10 +365,10 @@ pagePanier = () => {
 	  alert("Votre panier est vide");
 	  return false;
 	} else {
-	  console.log("Le panier n'est pas vide");
-	  return true;
+		console.log("Le panier n'est pas vide")
+		return true;
 	}
-  };
+};
 
 /*Envoi du formulaire*/
 
@@ -380,16 +380,6 @@ pagePanier = () => {
 			if (this.readyState == XMLHttpRequest.DONE && this.status == 201) {
 		//Sauvegarde du retour de l'API dans la sessionStorage --> affichage dans confirmation.html
 		sessionStorage.setItem("order", this.responseText);
-
-		//Chargement de la page de confirmation
-		/*document.forms["form-info"].action = './confirmation.html';
-		document.forms["form-info"].submit();
-
-		resolve(JSON.parse(this.responseText));
-	} else {
-	}
-};*/
-
 		window.location.href="./confirmation.html";
         resolve(JSON.parse(this.responseText));
         console.log(this.status);
@@ -407,9 +397,14 @@ validerCommande = () =>{
   //Ecoute de l'event click du formulaire
   let commande = document.getElementById("formConfirm");
   commande.addEventListener("click", function(){
-	//Lancement des verifications du panier et du form => si Ok envoi
+	//Lancement des verifications du panier et du formulaire => Construction du tableau products envoyé à l'API
 	if(verifPanier() == true && verifContenu() != null){
 		console.log("L'envoi peut être effectué");
+		panierUser.forEach((product) => {
+		products.push(product._id);
+	});
+		console.log(products);
+
 	//Création de l'objet à envoyer
 	let objet = {
 		contact,
@@ -496,8 +491,8 @@ confirmListe = () => {
 
   //Insertion dans le HTML
   confirmResume.appendChild(confirmLigneProduit);
-  confirmLigneProduit.appendChild(confirmImgArticle);
-  confirmLigneProduit.appendChild(confirmNomArticle);
+  confirmLigneProduit.appendChild(confirmImgProduit);
+  confirmLigneProduit.appendChild(confirmNomProduit);
   confirmLigneProduit.appendChild(confirmPrixIndivProduit);
 
   //Contenu des lignes
