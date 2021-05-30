@@ -359,7 +359,7 @@ footer a:hover
 }
 
 /*Small devices*/
-@media (min-width: 600px) and (max-width:767px)
+@media (min-width: 601px) and (max-width:768px)
 {
     nav 
     {
@@ -369,6 +369,11 @@ footer a:hover
     nav ul 
     {
         margin-left: 5%;
+    }
+
+    header > nav > ul > li > a
+    {
+        font-size:smaller;
     }
 
     .accueil-txt

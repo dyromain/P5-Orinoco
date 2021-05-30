@@ -253,7 +253,7 @@ pagePanier = () => {
 	totalColonne.textContent = "Montant total";
 	totalLigne.appendChild(resumePrixaPayer);
 
-	resumePrixaPayer.setAttribute("id", "montantTotal");
+	resumePrixaPayer.setAttribute("id", "total-achat");
 	totalColonne.setAttribute("id", "totalColonne");
 
 	//Calcul de l'addition total
@@ -264,7 +264,7 @@ pagePanier = () => {
 
 	//Affichage du prix total à payer dans l'addition
 	console.log(montantTotal);
-	document.getElementById("montantTotal").textContent = montantTotal + " €";
+	document.getElementById("total-achat").textContent = montantTotal + " €";
 	}
 	};
 
@@ -385,7 +385,7 @@ pagePanier = () => {
         console.log(this.status);
     }
 };
-		request.open("POST", APIURL + "order");
+		request.open("POST", URLAPI + "order");
 		request.setRequestHeader("Content-Type", "application/json");
 		request.send(formRequest);
 		console.log(formRequest)
@@ -429,14 +429,19 @@ validerCommande = () =>{
 };
   
   //Récupération des informations pour affichage sur la page de confirmation
+  let getPrixTotal = document.getElementById("total-achat").textContent;
+
   resultatCommande = () => {
 	if (sessionStorage.getItem("order") != null) {
 	  let order = JSON.parse(sessionStorage.getItem("order"));
 	  document.getElementById("firstName").innerHTML = order.contact.firstName;
 	  document.getElementById("orderId").innerHTML = order.orderId;
+	  document.getElementById("total-achat").innerHTML = montantTotal;
+
 	  console.log(order);
 	  sessionStorage.removeItem("order");
 	}
+
 	//Redirection vers l'accueil
 	else {
 	  alert("Merci pour vote commande. A bientôt");
@@ -444,80 +449,3 @@ validerCommande = () =>{
 	}
   };
 
-//------Tableau de recap de la commande dans la page de confirmation------// /*
-
-confirmListe = () => {
-  //Création de la structure du tableau récapitulatif
-  //Tableau récapitulatif//
-  let confirmResume = document.createElement("table");
-  let confirmLigne = document.createElement("tr");
-  let confirmImg = document.createElement("th");
-  let confirmNom = document.createElement("th");
-  let confirmPrixIndiv = document.createElement("th");
-  let confirmLigneTotal = document.createElement("tr");
-  let confirmColonneTotal = document.createElement("th");
-  let confirmPrixTotal = document.createElement("td");
-
-  //Structure dans la page
-  let confirmPanier = document.getElementById("resumeCommande");
-  confirmPanier.appendChild(confirmResume);
-  confirmResume.appendChild(confirmLigne);
-  confirmLigne.appendChild(confirmImg);
-  confirmLigne.appendChild(confirmNom);
-  confirmLigne.appendChild(confirmPrixIndiv);
-
-  //Entêtes
-  confirmImg.textContent = "Produit";
-  confirmNom.textContent = "Nom";
-  confirmPrixIndiv.textContent = "Prix";
-
-  //Incrémentation de l'id des lignes pour chaque produit
-  let i = 0;
-  let order = JSON.parse(sessionStorage.getItem("order"));
-
-  order.products.forEach((orderProduct) => {
-
-  //Création de la ligne
-  let confirmLigneProduit = document.createElement("tr");
-  let confirmImgProduit = document.createElement("img");
-  let confirmNomProduit = document.createElement("td");
-  let confirmPrixIndivProduit = document.createElement("td");
-
-  //Attribution des class pour le css
-  confirmLigneProduit.setAttribute("id", "produit-commande" + i);
-  confirmImgProduit.setAttribute("class", "produit-img-commande");
-  confirmImgProduit.setAttribute("src", orderProduct.imageUrl);
-  confirmImgProduit.setAttribute("alt", "Photo du produit commandé");
-
-  //Insertion dans le HTML
-  confirmResume.appendChild(confirmLigneProduit);
-  confirmLigneProduit.appendChild(confirmImgProduit);
-  confirmLigneProduit.appendChild(confirmNomProduit);
-  confirmLigneProduit.appendChild(confirmPrixIndivProduit);
-
-  //Contenu des lignes
-  confirmNomProduit.textContent = orderProduct.name;
-  confirmPrixIndivProduit.textContent = orderProduct.price / 100 + " €";
-  });
-
-  //Dernière ligne du tableau : Total
-  confirmResume.appendChild(confirmLigneProduit);
-  confirmLigneTotal.appendChild(confirmColonneTotal);
-  confirmLigneTotal.setAttribute("id", "ligne-total");
-  confirmColonneTotal.textContent = "Montant total";
-  confirmLigneTotal.appendChild(confirmPrixTotal);
-
-  confirmPrixTotal.setAttribute("id", "additionTotal");
-  confirmColonneTotal.setAttribute("id", "colonneConfirmTotal");
-
-  //Calcule de l'addition total
-  let additionTotal = 0;
-  order.products.forEach((orderProduct) => {
-  additionTotal += orderProduct.price / 100;
-  });
-
-  //Affichage du prix total à payer dans l'addition
-  console.log(additionTotal);
-  document.getElementById("additionTotal").textContent =
-  additionTotal + " €";
-};
