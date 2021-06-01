@@ -56,7 +56,7 @@ header
 
 nav
 {
-    width:50%;
+    width:100%;
 }
 
 nav ul
@@ -115,9 +115,10 @@ nav a:hover
 .liste-produit
 {
     display: flex;
-    margin-left: 1%;
-    margin-right: 1%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top:2%;
+    width:90%;
 }
 
 .liste-produit_bloc
@@ -210,7 +211,7 @@ nav a:hover
 
 .ficheProduit
 {
-    width: 60%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -221,6 +222,12 @@ nav a:hover
     margin-left: auto;
     margin-right: auto;
 }
+
+.photo-prdt img:hover
+{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}  
 
 p#descProduit
 {
@@ -250,6 +257,68 @@ button#ajoutProduit a:hover
 {
     font-weight:bold;
     filter:brightness(130%);
+}
+
+/*Panier*/
+
+img.img-produit
+{
+    width: 100%;
+}
+
+tr th
+{
+    width:10%;
+}
+
+#resumePanier
+{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+td
+{
+    text-align:center;
+}
+
+#sommeTotale
+{
+    background-color: #F3E9F1;
+}
+
+.form-user > input
+{
+    width:50%;
+    margin-bottom: 0.5%;
+}
+
+input#prenom
+{
+    width:48.7%;
+}
+
+input#email
+{
+    width:46%;
+}
+
+input#adresse
+{
+    width:48.55%;
+}
+
+input#ville
+{
+    width:50.25%;
+}
+
+input#formConfirm
+{
+    margin-top:1%;
 }
 
 /*Footer*/
@@ -301,29 +370,121 @@ footer a:hover
 
 
 /*X-small devices*/
-@media (max-width: 600px)
+
+@media (max-width:320px)
+{
+    .logo 
+    {
+        width: 66%;
+    }
+
+    footer > ul
+    {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    nav > ul
+    {
+        flex-direction: column;
+        display: flex;
+        margin-left: 23%;
+    }
+
+}
+
+@media (max-width:412px)
 {
     nav 
     {
-        width: 65%;
+        font-size:smaller;
     }
 
-    nav ul 
+}
+
+@media (max-width: 472px)
+{
+    .logo
     {
+        width:100%;
+    }
+
+    footer > ul 
+    {
+    flex-direction: column;
+    margin-left: 0;
+    }
+}
+
+@media (max-width: 600px)
+{
+    .liste-produit > div
+    {
+    margin-bottom: 2%;
+    }
+
+    .liste-produit > div:nth-child(1)
+    {
+        width: 100%;
+    }
+
+    .liste-produit > div:nth-child(2)
+    {
+        width: 100%;
+    }
+
+    .liste-produit > div:nth-child(3)
+    {
+        width: 100%;
+    }
+
+    .liste-produit > div:nth-child(4)
+    {
+        width: 100%;
+    }
+
+    .liste-produit > div:nth-child(5)
+    {
+        width: 100%;
+    }
+
+    .produit-desc 
+    {
+        display: flex;
+        margin-top: 1%;
+        max-width: 95%;
+        margin-bottom: 1%;
+    }
+
+    .logo
+    {
+        width:44%;
+    }
+
+    .logo > img {
+        width: 100%;
         margin-left: 5%;
     }
 
-    .accueil-txt
+    nav 
     {
-        font-size:2em;
-        width: 35%;
-        left: 13px;
-        top:-10px;
+        width: 100%;
     }
 
-    .liste-produit_bloc > h2 
+    nav ul
     {
-        font-size: 1em;
+        margin-left: 15%;
+        font-size: 1.2em;
+    }
+    
+    
+    .accueil-txt
+    {
+        font-size:1.8em;
+        width: 100%;
+        top:-10px;
+        left: 8px;
     }
 
     .liste-produit_bloc
@@ -344,23 +505,35 @@ footer a:hover
     .liste-produit p {
         margin-left: auto;
         margin-right: auto;
-        font-size: smaller;
+        margin-bottom: 0;
+        font-weight: bold;
+        }
     }
 
     footer > ul 
     {
-        width: 75%;
+        width: 85%;
     }
 
     .social
     {
         width:35%;
     }
-}
+
 
 /*Small devices*/
 @media (min-width: 601px) and (max-width:768px)
 {
+    .logo
+    {
+        width:60%;
+    }
+
+    .logo > img {
+        width: 45%;
+        margin-left: 5%;
+    }
+
     nav 
     {
         width: 65%;
@@ -444,4 +617,6 @@ footer a:hover
     {
         font-size:1.4em;
     }
+
+    
 }

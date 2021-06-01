@@ -265,6 +265,7 @@ pagePanier = () => {
 	//Affichage du prix total à payer dans l'addition
 	console.log(montantTotal);
 	document.getElementById("total-achat").textContent = montantTotal + " €";
+	localStorage.setItem("montantTotal", JSON.stringify(montantTotal));
 	}
 	};
 
@@ -420,7 +421,7 @@ validerCommande = () =>{
    //Une fois la commande passée : retour à l'état initial des tableaux/objet/localStorage
    contact = {};
    products = [];
-   localStorage.clear();
+  
    console.log("Localstorage vidé");
 } else {
    console.log("Erreur");
@@ -429,14 +430,14 @@ validerCommande = () =>{
 };
   
   //Récupération des informations pour affichage sur la page de confirmation
-  let getPrixTotal = document.getElementById("total-achat").textContent;
 
   resultatCommande = () => {
 	if (sessionStorage.getItem("order") != null) {
 	  let order = JSON.parse(sessionStorage.getItem("order"));
 	  document.getElementById("firstName").innerHTML = order.contact.firstName;
 	  document.getElementById("orderId").innerHTML = order.orderId;
-	  document.getElementById("total-achat").innerHTML = montantTotal;
+	  let totalAchat = JSON.parse(localStorage.getItem("montantTotal"));
+	  document.getElementById("total-achat").innerHTML = totalAchat + "€";
 
 	  console.log(order);
 	  sessionStorage.removeItem("order");
@@ -447,5 +448,8 @@ validerCommande = () =>{
 	  alert("Merci pour vote commande. A bientôt");
 	  window.location = "./index.html";
 	}
+	localStorage.clear();
   };
+
+  
 
