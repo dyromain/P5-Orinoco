@@ -85,7 +85,7 @@ nav a:hover
 
 .fa-user, .fa-shopping-cart
 {
-    padding-right:4%;
+    padding-right:2%;
 }
 
 /*Présentation accueil*/
@@ -296,24 +296,29 @@ td
     margin-bottom: 0.5%;
 }
 
+input#nom
+{
+    width:17.4em;
+}
+
 input#prenom
 {
-    width:48.7%;
+    width:16.1em;
 }
 
 input#email
 {
-    width:46%;
+    width:13.25em;
 }
 
 input#adresse
 {
-    width:48.55%;
+    width:15.9em;
 }
 
 input#ville
 {
-    width:50.25%;
+    width:17.65em;
 }
 
 input#formConfirm
@@ -392,6 +397,11 @@ footer a:hover
         margin-left: 23%;
     }
 
+
+    #resumePanier
+    {
+        width: 90%;
+    }
 }
 
 @media (max-width:412px)
@@ -459,7 +469,7 @@ footer a:hover
 
     .logo
     {
-        width:44%;
+        width:50%;
     }
 
     .logo > img {
@@ -619,4 +629,29 @@ footer a:hover
     }
 
     
+}
+
+@media (min-width: 768px)
+{
+        .merci
+    {
+        margin-top: 4%;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4%;
+    }
+
+}
+
+@media (max-width: 768px)
+{
+    .merci
+    {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    }
 }
