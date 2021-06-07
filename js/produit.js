@@ -17,7 +17,7 @@
     document.getElementById("prixProduit").innerHTML = produitSelect.price / 100 + " euros";
 
     
-    //Création des options selon le type de produit (ligne 3)//
+    //Création des options selon le type de produit (ligne 3 de index.js)//
     switch(produitsVente){
 		case "teddies":
     	produitSelect.colors.forEach((produit)=>{
@@ -25,7 +25,7 @@
     		document.getElementById("choixOption").appendChild(optionProduit).innerHTML = produit;
     	});
 		break;
-    	case "lenses":
+    	case "cameras":
     	produitSelect.lenses.forEach((produit)=>{
     		let optionProduit = document.createElement("option");
     		document.getElementById("choixOption").appendChild(optionProduit).innerHTML = produit;
@@ -38,7 +38,7 @@
     	});    	
     	break;
     	default:
-    	console.log("Merci d'ajouter une variable produitsVente à ligne 3 du fichier index.js");
+    	console.log("Merci d'ajouter une variable produitsVente à la ligne 3 du fichier index.js");
     }
 };
 

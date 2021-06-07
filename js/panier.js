@@ -212,6 +212,9 @@ pagePanier = () => {
         resolve(JSON.parse(this.responseText));
         console.log(this.status);
     }
+			else {
+				console.log("Erreur");
+			}
 };
 		request.open("POST", URLAPI + "order");
 		request.setRequestHeader("Content-Type", "application/json");
