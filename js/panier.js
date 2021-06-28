@@ -112,10 +112,10 @@ pagePanier = () => {
 	verifContenu = () => {
 	let verifNombre = /[0-9]/;
 	let verifMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	let verifCaractereSpec = /[§!@#$%^&*().?":{}|<>]/; 
+	let verifCaractereSpec = /[§!@#$%^&*().?":{}|<>+]/; 
   
 	//Message à la fin des vérifications
-	let verifMessage = "";
+	let verifMessage = "Les caractères spéciaux et les chiffres ne sont pas autorisés, et le formulaire doit être entièrement complété. Merci de vérifier les données saisies.";
   
 	//Récupération du contenu inséré
   	let nom = document.getElementById("nom").value;
@@ -125,63 +125,38 @@ pagePanier = () => {
 	let ville = document.getElementById("ville").value;
   
 	//Tests du contenu inséré dans le formulaire
-	//Test du nom
-	if (
-	  verifNombre.test(nom) == true ||
-	  verifCaractereSpec.test(nom) == true ||
-	  nom == ""
-	) {
-	  verifMessage = "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
-	} else {
-	  console.log("Nom valide");
+	function verifInputValue(regex, inputValue){
+			 
+		if(inputValue !== ""){ 
+		
+		   return  regex.test(inputValue);
+
+		}
+
+		
+		return "";
+
 	}
-	//Test du prénom
-	if (
-	  verifNombre.test(prenom) == true ||
-	  verifCaractereSpec.test(prenom) == true ||
-	  prenom == ""
-	) {
-	  verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
-	} else {
-	  console.log("Prénom valide");
+
+
+	if(["", true].includes(verifInputValue(verifNombre, nom)) === true || ["", true].includes(verifInputValue(verifNombre, prenom)) === true
+	|| ["", true].includes(verifInputValue(verifNombre, ville)) === true || ["", false].includes(verifInputValue(verifMail, email)) === true ||
+	["", true].includes(verifInputValue(verifCaractereSpec, nom)) === true || ["", true].includes(verifInputValue(verifCaractereSpec, prenom)) === true || 
+	["", true].includes(verifInputValue(verifCaractereSpec, ville)) === true || ["", true].includes(verifInputValue(verifCaractereSpec, adresse)) === true)
+	{
+		alert(verifMessage)
+		
+	}	else{
+		contact = {
+			lastName: nom,
+			firstName: prenom,
+			address: adresse,
+			city: ville,
+			email: email,
+		  };
+		  return contact;
 	}
-	//Test du mail
-	if (verifMail.test(email) == false) {
-	verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
-	} else {
-	  console.log("Adresse e-mail valide");
-	}
-	//Test de l'adresse
-	if (verifCaractereSpec.test(adresse) == true || adresse == "") {
-	verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
-	} else {
-	  console.log("Adresse postale valide");
-	}
-	//Test de la ville
-	if (
-	  (verifCaractereSpec.test(ville) == true ||
-	  verifNombre .test(ville) == true) ||
-	  ville == ""
-	) {
-	  verifMessage = verifMessage + "\n" + "Les caractères spéciaux et les chiffres ne sont pas autorisés. Merci de vérifier les données saisies.";
-	} else {
-	  console.log("Ville valide");
-	}
-	//S'il y a une erreur : affichage d'un message d'alerte
-	if (verifMessage != "") {
-	  alert("Attention :" + "\n" + verifMessage);
-	}
-	//Si le formulaire ne comporte aucune erreur : construction d'un objet contact
-	else {
-	  contact = {
-		lastName: nom,
-		firstName: prenom,
-		address: adresse,
-		city: ville,
-		email: email,
-	  };
-	  return contact;
-	}
+
   };
   
   //Vérification du panier
@@ -258,4 +233,3 @@ validerCommande = () =>{
 };
 });
 };
-  

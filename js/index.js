@@ -4,7 +4,6 @@ const produitsVente = "teddies"
 const URLAPI = "http://localhost:3000/api/" + produitsVente + "/";
 
 //id du produit pour pouvoir effectuer un tri dans l'API//
-
 let produitID = "";
 
 /*Appel de l'API*/
