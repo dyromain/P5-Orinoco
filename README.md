@@ -1,6 +1,21 @@
 # Orinoco #
 
-This is the back end server for Project 5 of the Web Developer path.
+### Prérequis ###
+
+Se placer dans le dossier back-end
+
+Installer Node.js et npm (taper "node -v" et "npm -v" dans le terminal de l'éditeur de code pour vérifier que le tout est bien installé et les versions installées)
+
+### Installation ###
+
+Cloner ce repository.
+A partir du dossier du projet, lancer npm avec la commande "npm install" pour installer les dépendances
+
+Taper "node server" pour lancer le serveur. Le serveur doit fonctionner en localhost avec le port par défaut 3000. localhost:3000
+
+Une fois le serveur lancé, écrire l'url de l'API : http://localhost:3000/api/teddies
+
+****************************
 
 ### Prerequisites ###
 
@@ -18,7 +33,7 @@ console when the server starts, e.g. `Listening on port 3001`.
 
 <strong>Construisez un site e-commerce en Javascript</strong>
 
-Mission : Intégrez de manière dynamique les maquettes du site d'Orinoco avec JavaScript. Vous utiliserez l’API pour récupérer les produits et leurs détails, et vous gérerez l’ajout des produits au panier.
+Le projet 5 du parcours Développeur web chez Openclassrooms consiste à créer la partie front-end d'un site e-commerce. L'objectif étant de créer un premier MVP (Produit Minimum Viable) pour démontrer le fonctionnement des applications à des investisseurs potentiels.
 
 Compétences évaluées :
 - Interagir avec un web service avec JavaScript
@@ -29,7 +44,7 @@ Compétences évaluées :
 ****************************
 <strong>Build an e-commerce Website with JavaScript</strong>
 
-Project: Use mockups to develop Orinoco's website in JavaScript. Get experience using an API to collect information about products and add a cart feature for purchases.
+This is the back end server for Project 5 of the Web Developer path. The aim was to create the front-end part of an e-commerce website by using an API to collect information about products and adding a cart feature for purchases.
 
 Skills acquired in this project:
 - Interact with a web service using JavaScript
