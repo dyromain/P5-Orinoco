@@ -2,8 +2,6 @@
 
 ### Prérequis ###
 
-Se placer dans le dossier back-end
-
 Installer Node.js et npm (taper "node -v" et "npm -v" dans le terminal de l'éditeur de code pour vérifier que le tout est bien installé et les versions installées)
 
 ### Installation ###
